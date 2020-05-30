@@ -1,7 +1,7 @@
 {{ define "main" }} {{ $paginator := .Paginate (where .Site.RegularPages "Type"
 "in" .Site.Params.mainSections) }}
 <main class="center mv4 content-width ph3">
-  {{ range where .Data.Pages "Title" "Home" }} {{ .Content }} {{ end }}
+  {{ range where .Site.Pages "Title" "Home" }} {{ .Content }} {{ end }}
   <ul class="list pa0">
     {{ range $paginator.Pages }}
     <li class="mb2">
