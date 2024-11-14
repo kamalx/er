@@ -107,3 +107,43 @@ if (document.getElementById("contents-list") !== null && document.getElementsByC
   }
 </script>
 {{end}}
+<script>
+  // theme switcher
+  let d = document.documentElement;
+
+  if(localStorage.userColorScheme) {
+    d.dataset.userColorScheme = localStorage.userColorScheme;
+  } else {
+    if(d.dataset.userColorScheme && d.dataset.userColorScheme !== '') {
+      localStorage.userColorScheme = d.dataset.userColorScheme;
+    }
+  }
+
+  let nav_menu = document.querySelector('#navbar>div:last-of-type');
+
+  const make = (el) => document.createElement(el);
+
+  let switcher = make('div');
+  let dark_cb = make('input');
+  dark_cb.type = 'checkbox';
+  dark_cb.id = 'theme_switcher';
+  dark_cb.setAttribute('aria-hidden', true);
+
+  let switch_label = make('label');
+  switch_label.setAttribute('for', 'theme_switcher');
+  switch_label.id = 'switch_mode';
+  switch_label.setAttribute('aria-hidden', true);
+
+  switcher.append(dark_cb);
+  switcher.append(switch_label);
+  nav_menu.append(switcher);
+
+  if(d.dataset.userColorScheme == 'dark') dark_cb.checked = true;
+
+  let is_dark_theme = dark_cb.checked;
+  dark_cb.addEventListener('change', (e) => {
+    is_dark_theme = e.target.checked;
+    d.dataset.userColorScheme = is_dark_theme ? 'dark' : 'light';
+    localStorage.userColorScheme = d.dataset.userColorScheme;
+  });
+</script>

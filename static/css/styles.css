@@ -130,3 +130,51 @@ table tr th, table tr td {
     color: var(--main-color);
     margin-left: -1em;
 }
+
+.pv1 {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1rem;
+}
+
+/* theme switcher styles */
+#theme_switcher {
+  visibility: hidden;
+  display: block;
+  width: 1px;
+  height: 1px;
+}
+
+label#switch_mode {
+  display: block;
+  height: 1rem;
+  width: 2rem;
+  border-radius: 1rem;
+  background: linear-gradient(90deg,#999, #222);
+  box-shadow: inset 0 0 2px 3px solid black;
+  position: relative;
+  margin-right: 2rem;
+  cursor: pointer;
+
+  --size: 0.8rem;
+}
+
+label#switch_mode::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: var(--size); height: var(--size);
+  left: 1px; top: 1px;
+  border-radius: var(--size);
+  background: var(--body-text-color);
+  border: 1px solid #ddd;
+  transition: left 100ms ease-in-out;
+}
+
+#theme_switcher~label#switch_mode::after {
+  left: 1px;
+}
+
+#theme_switcher:checked~label#switch_mode::after {
+  left: 1rem;
+}
