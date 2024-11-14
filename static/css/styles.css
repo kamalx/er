@@ -32,9 +32,10 @@ pre {
 }
 
 p code {
-  padding: .25rem .5rem;
+  padding: 0 .3rem;
   font-size: 0.9em;
   background-color: var(--code-background-color);
+  color: var(--body-text-color);
   display: inline-block;
 }
 
