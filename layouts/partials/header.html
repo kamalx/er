@@ -8,12 +8,13 @@
 <style type="text/css">{{ partial "css/variables.css" . | safeCSS }}</style>
 <link href='{{ "css/tachyons.min.css" | relURL }}' rel="stylesheet">
 <link href='{{ "css/styles.css" | relURL }}' rel="stylesheet">
+<link href='{{ "css/syntax-emacs.css" | relURL }}' rel="stylesheet">
 
 <!-- Icon -->
-<link rel="icon" 
+<link rel="icon"
 {{ if .Site.Params.favicon }}
-  href="{{ .Site.Params.favicon | relURL }}" 
-{{ else }} 
+  href="{{ .Site.Params.favicon | relURL }}"
+{{ else }}
   href='{{ "/favicon.ico" | relURL }}'
 {{ end }}
 type="image/x-icon"/>

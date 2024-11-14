@@ -1,0 +1,122 @@
+/* color defs for pygments code syntax highlighting */
+:root {
+  /* variables for pygments syntax highlighting to replace hard-coded colors */
+  --pyg-bg: #f8f8f8;
+  --pyg-linehighlight: #dfdfdf;
+  --pyg-linenumbers: #7f7f7f;
+  --pyg-keyword: #a2f;
+  --pyg-keyword-type: #0b0;
+  --pyg-literals-1: #b44;
+  --pyg-literals-2: #b62;
+  --pyg-literals-3: #b68;
+  --pyg-literals-4: #008000;
+  --pyg-comments: #080;
+  --pyg-class: #00f;
+  --pyg-constant: #800;
+  --pyg-name-entity: #999;
+  --pyg-name-exception: #d2413a;
+  --pyg-name-function: #00a000;
+  --pyg-name-tag: #008000;
+  --pyg-name-variable: #b8860b;
+  --pyg-numbers: #666;
+  --pyg-deleted: #a00000;
+  --pyg-error: #f00;
+  --pyg-generic-heading: #000080;
+  --pyg-generic-subheading: #800080;
+  --pyg-inserted: #00a000;
+  --pyg-traceback: #04d;
+  --pyg-whitespace: #bbb;
+}
+
+[data-user-color-scheme="dark"] {
+  /* variables for pygments syntax highlighting for dark theme */
+  /* dark-theme overrides to the above only. */
+  --pyg-bg: #333;
+}
+
+/* Background */ .bg { background-color: var(--pyg-bg); }
+/* PreWrapper */ .chroma { background-color: var(--pyg-bg); }
+/* Other */ .chroma .x {  }
+/* Error */ .chroma .err {  }
+/* CodeLine */ .chroma .cl {  }
+/* LineLink */ .chroma .lnlinks { outline:none;text-decoration:none;color:inherit }
+/* LineTableTD */ .chroma .lntd { vertical-align:top;padding:0;margin:0;border:0; }
+/* LineTable */ .chroma .lntable { border-spacing:0;padding:0;margin:0;border:0; }
+/* LineHighlight */ .chroma .hl { background-color: var(--pyg-linehighlight); }
+/* LineNumbersTable */ .chroma .lnt { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color: var(--pyg-linenumbers);  }
+/* LineNumbers */ .chroma .ln { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color: var(--pyg-linenumbers); }
+/* Line */ .chroma .line { display:flex; }
+/* Keyword */ .chroma .k { color: var(--pyg-keyword);font-weight:bold }
+/* KeywordConstant */ .chroma .kc { color: var(--pyg-keyword);font-weight:bold }
+/* KeywordDeclaration */ .chroma .kd { color: var(--pyg-keyword);font-weight:bold }
+/* KeywordNamespace */ .chroma .kn { color: var(--pyg-keyword);font-weight:bold }
+/* KeywordPseudo */ .chroma .kp { color: var(--pyg-keyword) }
+/* KeywordReserved */ .chroma .kr { color: var(--pyg-keyword);font-weight:bold }
+/* KeywordType */ .chroma .kt { color:var(--pyg-keyword-type);font-weight:bold }
+/* Name */ .chroma .n {  }
+/* NameAttribute */ .chroma .na { color:var(--pyg-literals-1); }
+/* NameBuiltin */ .chroma .nb { color: var(--pyg-keyword) }
+/* NameBuiltinPseudo */ .chroma .bp {  }
+/* NameClass */ .chroma .nc { color:var(--pyg-class) }
+/* NameConstant */ .chroma .no { color:var(--pyg-constant); }
+/* NameDecorator */ .chroma .nd { color: var(--pyg-keyword) }
+/* NameEntity */ .chroma .ni { color:var(--pyg-name-entity);font-weight:bold }
+/* NameException */ .chroma .ne { color: var(--pyg-name-exception);font-weight:bold }
+/* NameFunction */ .chroma .nf { color:var(--pyg-name-function); }
+/* NameFunctionMagic */ .chroma .fm {  }
+/* NameLabel */ .chroma .nl { color:var(--pyg-name-label); }
+/* NameNamespace */ .chroma .nn { color:var(--pyg-class);font-weight:bold }
+/* NameOther */ .chroma .nx {  }
+/* NameProperty */ .chroma .py {  }
+/* NameTag */ .chroma .nt { color:var(--pyg-name-tag);font-weight:bold }
+/* NameVariable */ .chroma .nv { color:var(--pyg-name-variable); }
+/* NameVariableClass */ .chroma .vc {  }
+/* NameVariableGlobal */ .chroma .vg {  }
+/* NameVariableInstance */ .chroma .vi {  }
+/* NameVariableMagic */ .chroma .vm {  }
+/* Literal */ .chroma .l {  }
+/* LiteralDate */ .chroma .ld {  }
+/* LiteralString */ .chroma .s { color:var(--pyg-literals-1); }
+/* LiteralStringAffix */ .chroma .sa { color:var(--pyg-literals-1); }
+/* LiteralStringBacktick */ .chroma .sb { color:var(--pyg-literals-1); }
+/* LiteralStringChar */ .chroma .sc { color:var(--pyg-literals-1); }
+/* LiteralStringDelimiter */ .chroma .dl { color:var(--pyg-literals-1); }
+/* LiteralStringDoc */ .chroma .sd { color:var(--pyg-literals-1);;font-style:italic }
+/* LiteralStringDouble */ .chroma .s2 { color:var(--pyg-literals-1); }
+/* LiteralStringEscape */ .chroma .se { color:var(--pyg-literals-2);font-weight:bold }
+/* LiteralStringHeredoc */ .chroma .sh { color:var(--pyg-literals-1); }
+/* LiteralStringInterpol */ .chroma .si { color:var(--pyg-literals-3);font-weight:bold }
+/* LiteralStringOther */ .chroma .sx { color:var(--pyg-name-tag) }
+/* LiteralStringRegex */ .chroma .sr { color:var(--pyg-literals-3) }
+/* LiteralStringSingle */ .chroma .s1 { color:var(--pyg-literals-1); }
+/* LiteralStringSymbol */ .chroma .ss { color:var(--pyg-name-variable); }
+/* LiteralNumber */ .chroma .m { color:var(--pyg-numbers) }
+/* LiteralNumberBin */ .chroma .mb { color:var(--pyg-numbers) }
+/* LiteralNumberFloat */ .chroma .mf { color:var(--pyg-numbers) }
+/* LiteralNumberHex */ .chroma .mh { color:var(--pyg-numbers) }
+/* LiteralNumberInteger */ .chroma .mi { color:var(--pyg-numbers) }
+/* LiteralNumberIntegerLong */ .chroma .il { color:var(--pyg-numbers) }
+/* LiteralNumberOct */ .chroma .mo { color:var(--pyg-numbers) }
+/* Operator */ .chroma .o { color:var(--pyg-numbers) }
+/* OperatorWord */ .chroma .ow { color: var(--pyg-keyword);font-weight:bold }
+/* Punctuation */ .chroma .p {  }
+/* Comment */ .chroma .c { color:var(--pyg-comments);font-style:italic }
+/* CommentHashbang */ .chroma .ch { color:var(--pyg-comments);font-style:italic }
+/* CommentMultiline */ .chroma .cm { color:var(--pyg-comments);font-style:italic }
+/* CommentSingle */ .chroma .c1 { color:var(--pyg-comments);font-style:italic }
+/* CommentSpecial */ .chroma .cs { color:var(--pyg-comments);font-weight:bold }
+/* CommentPreproc */ .chroma .cp { color:var(--pyg-comments) }
+/* CommentPreprocFile */ .chroma .cpf { color:var(--pyg-comments) }
+/* Generic */ .chroma .g {  }
+/* GenericDeleted */ .chroma .gd { color:var(--pyg-deleted); }
+/* GenericEmph */ .chroma .ge { font-style:italic }
+/* GenericError */ .chroma .gr { color:var(--pyg-error); }
+/* GenericHeading */ .chroma .gh { color:var(--pyg-generic-heading);font-weight:bold }
+/* GenericInserted */ .chroma .gi { color:var(--pyg-inserted); }
+/* GenericOutput */ .chroma .go { color:#888 }
+/* GenericPrompt */ .chroma .gp { color:var(--pyg-generic-heading);font-weight:bold }
+/* GenericStrong */ .chroma .gs { font-weight:bold }
+/* GenericSubheading */ .chroma .gu { color:var(--pyg-generic-subheading);font-weight:bold }
+/* GenericTraceback */ .chroma .gt { color:var(--pyg-traceback); }
+/* GenericUnderline */ .chroma .gl { text-decoration:underline }
+/* TextWhitespace */ .chroma .w { color:var(--pyg-whitespace); }
