@@ -5,7 +5,7 @@
   {{ with .Site.Menus.main }}
   <div class="{{ if lt (len . ) 3 }} flex-grow {{ else }} flex-ns mt2 mt0-ns{{ end }} pv1">
     {{ range . }}
-      <a class="link dim dark-gray f6 dib mr2 mr3-l ttu tracked" href='{{.URL}}' title="{{ .Name }}">{{ .Name }}</a>
+      <a class="link dim f6 dib mr2 mr3-l ttu tracked" href='{{.URL}}' title="{{ .Name }}">{{ .Name }}</a>
     {{ end }}
   </div>
   {{ end }}
