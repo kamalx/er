@@ -32,6 +32,8 @@
   /* variables for pygments syntax highlighting for dark theme */
   /* dark-theme overrides to the above only. */
   --pyg-bg: #333;
+  --pyg-class: #6ef;
+  --pyg-generic-heading: #66d;
 }
 
 /* Background */ .bg { background-color: var(--pyg-bg); }
