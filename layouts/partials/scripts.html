@@ -13,15 +13,19 @@
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
   var currentScrollPos = window.pageYOffset;
+  var tagCloud = document.getElementById("tag-cloud");
+
+  const TAG_CLOUD_DIMMER_OFFSET = 600;
 
   {{ if .Site.Params.showTagCloud | default true }}
-  if (document.getElementById("tag-cloud") !== null) { 
-    if (prevScrollpos > currentScrollPos) { // scroll up
-      document.getElementById("tag-cloud").style.visibility = "visible";
-      document.getElementById("tag-cloud").style.opacity = "1";
+  if (tagCloud !== null) {
+    if (prevScrollpos > currentScrollPos || currentScrollPos < TAG_CLOUD_DIMMER_OFFSET) {
+      // show/hide tag cloud at the set offset
+      tagCloud.style.visibility = "visible";
+      tagCloud.style.opacity = "1";
     } else {
-      document.getElementById("tag-cloud").style.visibility = "hidden";
-      document.getElementById("tag-cloud").style.opacity = "0";
+      tagCloud.style.visibility = "hidden";
+      tagCloud.style.opacity = "0";
     }
   }
   {{ end }}
