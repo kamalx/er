@@ -14,6 +14,7 @@ var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
   var currentScrollPos = window.pageYOffset;
   var tagCloud = document.getElementById("tag-cloud");
+  var scrollTopButton = document.getElementById("scroll-to-top");
 
   const TAG_CLOUD_DIMMER_OFFSET = 600;
 
@@ -31,13 +32,16 @@ window.onscroll = function() {
   {{ end }}
 
   {{ if .Site.Params.showScrollToTop | default true }}
-  if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
-      document.getElementById("scroll-to-top").style.display = "inline";
-      document.getElementById("scroll-to-top").style.visibility = "visible";
-      document.getElementById("scroll-to-top").style.opacity = "1";
-  } else {
-      document.getElementById("scroll-to-top").style.visibility = "hidden";
-      document.getElementById("scroll-to-top").style.opacity = "0";
+  // null-check for scrollTopButton
+  if(scrollTopButton !== null) {
+    if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+        scrollTopButton.style.display = "inline";
+        scrollTopButton.style.visibility = "visible";
+        scrollTopButton.style.opacity = "1";
+    } else {
+        scrollTopButton.style.visibility = "hidden";
+        scrollTopButton.style.opacity = "0";
+    }
   }
   {{ end }}
   prevScrollpos = currentScrollPos;
