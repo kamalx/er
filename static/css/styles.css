@@ -132,6 +132,25 @@ table tr th, table tr td {
     margin-left: -1em;
 }
 
+/* embedded subscribe form styling - outside the theme */
+.mc-field-group {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 4px;
+}
+
+#mce-EMAIL {
+  height: 1.5rem;
+  margin-left: 0.5rem;
+  padding: 0 0.5rem;
+}
+
+#mc-embedded-subscribe {
+  color: var(--background-color)!important;
+  cursor: pointer;
+}
+/* done embedded subscribe form styling */
+
 .pv1 {
   display: flex;
   flex-flow: row nowrap;
