@@ -1,6 +1,6 @@
 html { font-size: 18px; }
 body { color: var(--body-text-color); background-color: var(--background-color);
-  transition: color,background-color 2ms ease-in-out; }
+  transition: background-color 500ms, color 600ms ease-in-out; }
 .main-color { color: var(--main-color); }
 .secondary-color { color: var(--secondary-color); }
 .bg-main-color { background-color: var(--main-color); color: var(--logo-text-color); }
