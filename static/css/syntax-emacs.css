@@ -28,7 +28,7 @@
   --pyg-whitespace: #bbb;
 }
 
-[data-user-color-scheme="dark"] {
+html.dark {
   /* variables for pygments syntax highlighting for dark theme */
   /* dark-theme overrides to the above only. */
   --pyg-bg: #333;

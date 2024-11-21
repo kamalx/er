@@ -110,17 +110,7 @@ if (document.getElementById("contents-list") !== null && document.getElementsByC
 <script>
   // theme switcher
   let d = document.documentElement;
-
-  if(localStorage.userColorScheme) {
-    d.dataset.userColorScheme = localStorage.userColorScheme;
-  } else {
-    if(d.dataset.userColorScheme && d.dataset.userColorScheme !== '') {
-      localStorage.userColorScheme = d.dataset.userColorScheme;
-    }
-  }
-
   let nav_menu = document.querySelector('#navbar>div:last-of-type');
-
   const make = (el) => document.createElement(el);
 
   let switcher = make('div');
@@ -138,12 +128,12 @@ if (document.getElementById("contents-list") !== null && document.getElementsByC
   switcher.append(switch_label);
   nav_menu.append(switcher);
 
-  if(d.dataset.userColorScheme == 'dark') dark_cb.checked = true;
+  dark_cb.checked = IS_DARK_THEME; // update checkbox state on load
 
-  let is_dark_theme = dark_cb.checked;
+  const toggle_theme = new CustomEvent('toggle_theme', { bubbles: true }); // create custom event
+
   dark_cb.addEventListener('change', (e) => {
-    is_dark_theme = e.target.checked;
-    d.dataset.userColorScheme = is_dark_theme ? 'dark' : 'light';
-    localStorage.userColorScheme = d.dataset.userColorScheme;
+    e.target.dispatchEvent(toggle_theme); // dispatch custom event;
+    // listener for this is already registered in the head. See partials/header.html
   });
 </script>

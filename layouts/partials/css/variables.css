@@ -1,5 +1,6 @@
 /*https://coolors.co/afd5aa-f0f2ef-a69f98-3d3d3d-8c6057*/
 :root {
+  --color-mode: light;
   --main-color: #8C6056;
   --secondary-color: #AFD5AA;
   --logo-text-color: #fff;
@@ -9,10 +10,21 @@
   --code-background-color: #f8f8f8;
   --generic-link-color: #0066cc;
   --generic-link-hover-color: var(--body-text-color);
+  --dark-bgcolor: #1f2022;
+  --mid-bgcolor: #4d4f53;
+  --transition-1: none;
+  --transition-2: background-color 500ms, color 600ms ease-in-out;
+  --theme-transition: var(--transition-1); /* this value is set to transition-2 after a short delay on page load */
 }
 
 
-[data-user-color-scheme="dark"] {
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --color-mode: dark;
+  }
+}
+
+html.dark {
   --body-text-color: #efefef;
   --heading-text-color: #fff;
   --background-color: #1f2022;
