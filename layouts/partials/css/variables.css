@@ -9,7 +9,7 @@
   --background-color: #fff;
   --code-background-color: #f8f8f8;
   --tag-background-color: #eee;
-  --generic-link-color: #0066cc;
+  --generic-link-color: var(--main-color);
   --generic-link-hover-color: var(--body-text-color);
   --dark-bgcolor: #1f2022;
   --mid-bgcolor: #4d4f53;
@@ -31,5 +31,5 @@ html.dark {
   --background-color: #1f2022;
   --code-background-color: #666;
   --tag-background-color: #000;
-  --generic-link-color: #eeea17;
+  --generic-link-color: var(--main-color);
 }
