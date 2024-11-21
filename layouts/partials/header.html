@@ -4,6 +4,45 @@
 {{ partial "open_graph.html" . }}
 {{ hugo.Generator }}
 
+<script>
+  let IS_DARK_THEME = false; // using this as a global flag
+
+  function domready(func) {
+    document.addEventListener("DOMContentLoaded", func); // or...
+    if (document.readyState === "interactive" || document.readyState === "complete" ) {
+      func();
+    }
+  } // wrap everything that depends on DOM in this thing.
+
+  (function () {
+    const doc = document.documentElement;
+
+    if( localStorage.ThemeColorScheme === 'dark' ||
+    (!('ThemeColorScheme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) ) {
+      IS_DARK_THEME = true;
+    }
+
+    doc.classList.toggle('dark', IS_DARK_THEME); // using this class for toggling the visual styles
+
+    document.addEventListener('toggle_theme', (e) =>  {
+      IS_DARK_THEME = !IS_DARK_THEME; // flip it
+      const THEME = IS_DARK_THEME ? 'dark' : 'light';
+      localStorage.ThemeColorScheme = THEME; // add setting to localstorage
+      // doc.dataset.themeColorScheme = THEME; // add a data attrib to document root for visual ref (no longer necessary, we were earlier using this as a selector for styling)
+
+      doc.classList.toggle('dark', IS_DARK_THEME);
+    });
+  })();
+
+  domready(() => {
+    const docroot = document.documentElement;
+    const style_timeout = window.setTimeout(() => {
+      docroot.style.setProperty('--theme-transition', 'var(--transition-2)');
+      // apply transitions half a second later, prevent animated FOUC
+    }, 500);
+  })
+</script>
+
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
 <style type="text/css">{{ partial "css/variables.css" . | safeCSS }}</style>
 <link href='{{ "css/tachyons.min.css" | relURL }}' rel="stylesheet">
