@@ -227,6 +227,7 @@ label#switch_mode::after {
   text-decoration: none;
   font-size: small;
   font-weight: 800;
+  line-height: 1;
   display: inline-block;
   padding: 4px 2px;
   color: var(--body-text-color);
