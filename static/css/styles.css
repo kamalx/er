@@ -198,3 +198,108 @@ label#switch_mode::after {
 #theme_switcher:checked~label#switch_mode::after {
   left: 1rem;
 }
+
+/* post meta and post tags */
+.post-meta {
+  font-family: monospace;
+  font-size: small;
+}
+
+.post-meta time {
+  color: var(--body-text-color);
+}
+
+.post-meta:hover .post-tags a {
+  color: var(--generic-link-color);
+  transition: 0s color;
+}
+
+.post-tags {
+  /* margin-left: 0.2rem; */
+}
+
+.post-tags i.svg-icon {
+  position: relative;
+  top: 4px;
+}
+
+.post-tags a.link {
+  text-decoration: none;
+  font-size: small;
+  font-weight: 800;
+  line-height: 1;
+  display: inline-block;
+  padding: 4px 2px;
+  color: var(--body-text-color);
+  border-bottom: 1px solid var(--background-color);
+}
+
+.post-tags a.link:hover {
+  border-bottom: 1px solid var(--generic-link-color);
+}
+
+/* SVG icons and sprites */
+i.svg-icon {
+  vertical-align: sub;
+  display: none;
+}
+i.svg-icon svg {
+  width: 16px;
+  height: 16px;
+}
+i.svg-icon.svg-icon--fill svg {
+  fill: var(--body-text-color);
+}
+
+/* top heading styles */
+#welcome-to-punchagans-blog,
+main.center>h1:first-of-type {
+  font-weight: 900;
+  font-size: 4rem;
+  color: var(--background-color);
+  --detail-color: var(--generic-link-color);
+    text-shadow: 1px 1px 0 var(--detail-color),
+      -1px -1px 0 var(--detail-color),
+      -1px 1px 0 var(--detail-color),
+      1px -1px 0 var(--detail-color),
+      0 1px 0 var(--detail-color),
+      0 -1px 0 var(--detail-color),
+      -1px 0 0 var(--detail-color),
+      1px 0 0 var(--detail-color)
+}
+
+main > h1:first-of-type > span {
+  display: block;
+  font-size: 1.67rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+main>p {
+  line-height: 1.67rem;
+}
+
+ul.list {
+  margin-top: 4rem;
+  position: relative;
+}
+
+ul.list::before {
+  position: absolute;
+  content: "";
+  top: -2rem;
+  height: 1px;
+  width: 30%;
+  background-color: var(--generic-link-color);
+}
+
+@media screen and (max-width: 420px) {
+  #welcome-to-punchagans-blog,
+  main.center>h1:first-of-type {
+    font-size: 2rem;
+  }
+}
+
+/* scrolling */
+html { scroll-behavior: smooth; }
