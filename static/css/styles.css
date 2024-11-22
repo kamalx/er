@@ -7,9 +7,9 @@ body { color: var(--body-text-color); background-color: var(--background-color);
 .heading-font, .global-font { font-family: "Source Sans Pro"; }
 .heading-color { color: var(--heading-text-color); }
 .post-content a, .list-pages a, .pagination a {
-  border-bottom: 1px solid rgba(0,0,0,0.4);
+  border-bottom: 1px solid var(--generic-link-color);
   text-decoration: none;
-  color: inherit;
+  color: var(--generic-link-color);
 }
 a { text-decoration: none; color: var(--generic-link-color); }
 main a:hover, .list-pages a:hover, .pagination a:hover, #tag-cloud a:hover {
