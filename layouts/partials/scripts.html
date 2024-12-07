@@ -58,7 +58,7 @@ function topFunction() {
 {{ $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" .Content }}
 {{ $has_headers := ge (len $headers) 1 }}
 {{ if and $has_headers (ne .Params.toc false) }}
-if (document.getElementById("contents-list") !== null && document.getElementsByClassName("post-content").length !== 0) { 
+if (document.getElementById("contents-list") !== null && document.getElementsByClassName("post-content").length !== 0) {
   tocbot.init({
     // Where to render the table of contents.
     tocSelector: '#contents-list',
@@ -134,6 +134,6 @@ if (document.getElementById("contents-list") !== null && document.getElementsByC
 
   dark_cb.addEventListener('change', (e) => {
     e.target.dispatchEvent(toggle_theme); // dispatch custom event;
-    // listener for this is already registered in the head. See partials/header.html
+    // listener for this is registered in the head. See partials/header.html
   });
 </script>

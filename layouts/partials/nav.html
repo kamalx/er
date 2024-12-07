@@ -4,6 +4,27 @@
   </div>
   {{ with .Site.Menus.main }}
   <div class="{{ if lt (len . ) 3 }} flex-grow {{ else }} flex-ns mt2 mt0-ns{{ end }} pv1">
+      <!-- the switch-->
+      <input id="toggle_search_modal" type="checkbox" name="searchmodal_switch"/>
+      <label class="search-button" for="toggle_search_modal">
+        <div class="off">
+          <div class="button">
+              <span>/</span> or <span>t</span> to search</div>
+        </div>
+      </label>
+
+      <!-- the modal-->
+      <div class="search-modal" id="search_modal">
+        <div class="exit-search">
+          <label for="toggle_search_modal">&times;</label>
+        </div>
+        <div class="search-bar-ui">
+          <input id="search" type="text" name="search" placeholder="Search for anything on this site"/>
+        </div>
+        <div class="results">
+        </div>
+      </div>
+      <!-- /modal -->
     {{ range . }}
       <a class="link dim f6 dib mr2 mr3-l ttu tracked" href='{{.URL}}' title="{{ .Name }}">{{ .Name }}</a>
     {{ end }}
