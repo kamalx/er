@@ -4,6 +4,34 @@
   </div>
   {{ with .Site.Menus.main }}
   <div class="{{ if lt (len . ) 3 }} flex-grow {{ else }} flex-ns mt2 mt0-ns{{ end }} pv1">
+      <!-- the switch-->
+      <input id="toggle_search_modal" type="checkbox" name="searchmodal_switch"/>
+      <label class="search-button" for="toggle_search_modal">
+        <div class="off">
+          <div class="button">
+              <span>/</span> or <span>t</span> to search</div>
+        </div>
+      </label>
+
+      <!-- the modal-->
+      <div class="search-modal" id="search_modal">
+        <div class="exit-search">
+          <label for="toggle_search_modal" tabindex="2">&times;</label>
+        </div>
+        <div class="search-bar-ui">
+
+          <form action="/search" method="GET">
+            <input tabindex="1" id="search_query" type="search" name="q" placeholder="Search for anything on this site"/>
+            <button type="submit" class="more_search">Detailed Search ↗️</button>
+          </form>
+
+          <small class="hint">To close, press <span class="Key_Legend">ESC</span> or TAB out of search field and press <span class="Key_Legend">.</span></small>
+        </div>
+        <div class="quick-search-loading hidden">Loading...</div>
+        <div class="results" id="quick_search_results">
+        </div>
+      </div>
+      <!-- /modal -->
     {{ range . }}
       <a class="link dim f6 dib mr2 mr3-l ttu tracked" href='{{.URL}}' title="{{ .Name }}">{{ .Name }}</a>
     {{ end }}
