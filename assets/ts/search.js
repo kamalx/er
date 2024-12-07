@@ -65,7 +65,8 @@ domready(() => {
     let IGNORE_KEYS = false;
 
     for (let hit_target of no_hotkey_action) {
-      if (hit_target.contains(key.target)) IGNORE_KEYS = true;
+      if (hit_target.contains(key.target) && key.code !== keys.esc_key.code) IGNORE_KEYS = true;
+      // ESC key always works regardless of context
     }
 
     // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code
@@ -75,7 +76,8 @@ domready(() => {
         case keys.t_key.code:
           actions.show_search();
           break;
-        case keys.esc_key:
+        case keys.esc_key.code:
+        case keys.period_key.code:
           actions.hide_search();
       }
     }
@@ -87,7 +89,6 @@ domready(() => {
 
       if (CLOSE_OVERLAY_ON_ESC) {
         actions.hide_search();
-        // actions.hidedrawer();
       }
     }
   };
