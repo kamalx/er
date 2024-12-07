@@ -16,6 +16,14 @@
   --transition-1: none;
   --transition-2: background-color 500ms, color 600ms ease-in-out;
   --theme-transition: var(--transition-1); /* this value is set to transition-2 after a short delay on page load */
+  /* colors for search modal */
+  --overlay-color: black;
+  --overlay-background: rgba(220, 220, 220, 0.3);
+  --search-modal-color-borders: #6666;
+  --search-modal-color-shadows: #9999;
+  --search-button-hover-outline: #8cf8;
+  --key-text-color: var(--body-text-color);
+  --key-bg-color: #ccc;
 }
 
 
@@ -33,4 +41,12 @@ html.dark {
   --tag-background-color: #000;
   --generic-link-color: var(--main-color);
   --secondary-color: var(--main-color);
+  /* colors for search modal */
+  --overlay-color: white;
+  --overlay-background: rgba(20, 20, 20, 0.9);
+  --search-modal-color-borders: #6666;
+  --search-modal-color-shadows: #0009;
+  --search-button-hover-outline: var(--main-color);
+  --key-text-color: var(--body-text-color);
+  --key-bg-color: #555;
 }

@@ -28,7 +28,6 @@
       IS_DARK_THEME = !IS_DARK_THEME; // flip it
       const THEME = IS_DARK_THEME ? 'dark' : 'light';
       localStorage.ThemeColorScheme = THEME; // add setting to localstorage
-      // doc.dataset.themeColorScheme = THEME; // add a data attrib to document root for visual ref (no longer necessary, we were earlier using this as a selector for styling)
 
       doc.classList.toggle('dark', IS_DARK_THEME);
     });
@@ -48,10 +47,12 @@
 {{ $tachyons := resources.Get "css/tachyons.min.css" | fingerprint "sha256" }}
 {{ $styles := resources.Get "css/styles.css" | minify | fingerprint "sha256" }}
 {{ $syntax := resources.Get "css/syntax-emacs.css" | minify | fingerprint "sha256" }}
+{{ $search_styles := resources.Get "css/search.css" | minify | fingerprint "sha256" }}
 <link href='{{ $variables.Permalink }}' rel="stylesheet">
 <link href='{{ $tachyons.Permalink }}' rel="stylesheet">
 <link href='{{ $styles.Permalink }}' rel="stylesheet">
 <link href='{{ $syntax.Permalink }}' rel="stylesheet">
+<link href='{{ $search_styles.Permalink }}' rel="stylesheet">
 
 <!-- Icon -->
 <link rel="icon"
