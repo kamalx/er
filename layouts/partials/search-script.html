@@ -11,5 +11,5 @@ integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8i
 crossorigin="anonymous"
 referrerpolicy="no-referrer"></script>
 <!-- search implementation -->
-{{ $search_js := resources.Get "ts/search.js"  }} <!-- | minify | fingerprint "sha256" -->
+{{ $search_js := resources.Get "ts/search.js" | minify | fingerprint "sha256" }} <!--  -->
 <script type="text/javascript" src='{{ $search_js.Permalink }}'></script>
