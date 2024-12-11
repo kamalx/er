@@ -15,6 +15,18 @@ const param = (name) => {
 
 let SEARCH_CACHE_ = {}
 
+// be aware if you are on the /search page
+let ON_SEARCH_PAGE = false;
+const is_on_search_page = () => {
+  let loc = document.location.href;
+  let path_segments = loc.split('?')[0].split('/');
+  let last = path_segments.pop()
+  last = last === '' ? path_segments.pop() : last;
+  console.log(`We're on: ${last}`)
+  ON_SEARCH_PAGE =  last === 'search'
+  return ON_SEARCH_PAGE
+}
+
 // UI
 domready(() => {
   // console.log(`search v0.1 (er: assets/ts/)`);
@@ -51,6 +63,7 @@ domready(() => {
     // in this case, we need this small delay
     let t = setTimeout(function () {
       searchbox.focus();
+      clearTimeout(t);
     }, 200);
     return null;
   };
@@ -99,13 +112,13 @@ domready(() => {
 
   // EVENT LISTENERS
   document.body.addEventListener('keydown', grabkeys);
-  // attempt to debounce input // not working.
+  // attempt to debounce input
   let debounce_timer
   searchbox.addEventListener('input', function(){
     debounce_timer = setTimeout(function() {
       clearTimeout(debounce_timer);
       runquery(true); // quick = true
-    }, 2000);
+    }, 1000);
   })
 
 
@@ -145,15 +158,16 @@ domready(() => {
             } else {
               _(resultbox_selector).innerHTML = `<p class="search-results-empty">No matches found</p>`
             }
-
-            loading_message_container.textContent = `Showing (${results.length} of ${total_count}) results for "${query}"`;
+            let loading_msg = `Showing (${results.length} of ${total_count}) results for "${query}".`
+            loading_msg += quick ? ` Press "Detailed Search" to see more...` : ``;
+            loading_message_container.textContent = loading_msg
           }
         })
       })
       .catch((err) => {
         console.log(`Error fetching index: `, err)
       })
-    // FIXME: we need to prevent this on every call to execute search
+    // FIXME: we need to prevent this on every call to execute_search
   }
 
   // populate_results():
@@ -252,27 +266,29 @@ domready(() => {
     search_results.appendChild(list);
 
     let highlight_timeout = setTimeout(function(){
-      let search_results = _('#results-summary');
-      console.log(list);
+      // console.log(list);
       let highlighter = new Mark(list);
       highlighter.mark(query);
       clearTimeout(highlight_timeout);
-    }, 300);
+    }, 100);
   }
 
+  let RUNQUERY_FIRSTRUN = true
   function runquery(quick=false) {
     const MAX_RESULTS_TO_SHOW = 40;
+    RUNQUERY_FIRSTRUN = false
 
     if (searchbox !== null) {
       if(quick) {
         let query = searchbox.value
         console.log(`Loading quick search...`);
-        execute_search(query, 4, true); // this is for the search modal // FIXME: needs work
+        execute_search(query, 4, true); // this is for the search modal
       }
 
       let search_query = param("q");
       if (search_query) {
-        searchbox.value = search_query || "";
+        if(RUNQUERY_FIRSTRUN && ON_SEARCH_PAGE)
+          searchbox.value = search_query || ""; // NOTE: this must happen only on first run of runquery
         execute_search(search_query, MAX_RESULTS_TO_SHOW, false); // this is for /search page
       }
     }
