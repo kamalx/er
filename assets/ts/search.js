@@ -146,20 +146,26 @@ domready(() => {
           if(index) {
             let fuse = new Fuse(index, fuseOptions)
             let results = fuse.search(query)
-
-            let total_count;
+            console.log(`search result: `, results);
+            let total_count, loading_msg;
 
             if(results.length > 0 ) {
               total_count = results.length;
               if( limit && limit < results.length) {
                 results = results.slice(0, limit);
               }
+
+              loading_msg = `Showing (${results.length} of ${total_count}) results for "${query}".`
+              loading_msg += quick ? ` Press "Detailed Search" to see more...` : ``;
+              loading_msg += results.length > 30 ? ` Refine your search to narrow down`:``;
+
               populate_results(results, query, quick)
             } else {
               _(resultbox_selector).innerHTML = `<p class="search-results-empty">No matches found</p>`
+
+              loading_msg = `Looks like there's no mention of "${query}" here. Refine your search.`
             }
-            let loading_msg = `Showing (${results.length} of ${total_count}) results for "${query}".`
-            loading_msg += quick ? ` Press "Detailed Search" to see more...` : ``;
+
             loading_message_container.textContent = loading_msg
           }
         })
@@ -195,7 +201,21 @@ domready(() => {
       let snippet_highlights = []
 
       snippet_highlights.push(query)
-      snippet = contents.substring(0, summaryInclude * 2) + '&hellip;'
+      // putting refIndex of match in the middle, of the start
+      // index is less than 0, set it to 0; otherwise, get the
+      // start index relative to refIndex
+      let SNIP_START = (summaryInclude / 2) < value.refIndex ? (value.refIndex - summaryInclude/2) : 0;
+      let SNIP_END   = SNIP_START + summaryInclude;
+      // These start and end markers usually work, but can be inaccurate
+      // in some cases - esp where there are a lot of html entities in
+      // the content data like `&rsquo;` which actually resolves to just
+      // one char in the rendered html but adds up to 7 chars in the
+      // JSON data. Besides some matches are fuzzy, as in, the exact
+      // word is just not present in the post; or the matches can be on
+      // other keys like tags and the same word may not appear in the
+      // post at all. So, there is a possibility that there would be no
+      // highlighted word in the shown snippets of some search results.
+      snippet = contents.substring(SNIP_START, (SNIP_END+1)) + '&hellip;'; // substring excludes END index
 
       // the template we need to recreate here:
       //---
@@ -215,7 +235,7 @@ domready(() => {
       taglist.classList.add(...p_classlist); // theme specific for 'er'
 
       let timestamp = make('time'); // time
-      timestamp.textContent = value.item.year;
+      timestamp.textContent = value.item.date + ' ' + value.item.year;
       taglist.append(timestamp, ' |');
       // ---
       let tags = make('span') // span.post-tags
@@ -253,7 +273,7 @@ domready(() => {
       title.appendChild(title_link);
 
       snippet_para.innerHTML = snippet;
-      snippet_para.classList.add(...`code, silver`.split(' '));
+      snippet_para.classList.add(...`silver excerpt`.split(' '));
 
       // make the final listing block
       summary.append(title);
@@ -276,13 +296,14 @@ domready(() => {
   let RUNQUERY_FIRSTRUN = true
   function runquery(quick=false) {
     const MAX_RESULTS_TO_SHOW = 40;
+    const MAX_QUICK_RESULTS = 5;
     RUNQUERY_FIRSTRUN = false
 
     if (searchbox !== null) {
       if(quick) {
         let query = searchbox.value
         console.log(`Loading quick search...`);
-        execute_search(query, 4, true); // this is for the search modal
+        execute_search(query, MAX_QUICK_RESULTS, true); // this is for the search modal
       }
 
       let search_query = param("q");
@@ -299,7 +320,7 @@ domready(() => {
 });
 
 // Search engine config
-const summaryInclude = 69;
+const summaryInclude = 180;
 const fuseOptions = {
   shouldSort: true,
   includeMatches: true,
