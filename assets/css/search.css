@@ -5,6 +5,12 @@ body * {
   box-sizing: inherit;
 }
 
+/* body.search-active { height: 100vh; overflow-y: hidden; }
+- freeze it
+This works, but we need to sort out the mouse interaction and hotkey
+interaction does the exact same things before we can apply this.
+*/
+
 .Key_Legend, .button span {
   display: inline-block;
   border-radius: 4px;
@@ -22,6 +28,12 @@ body * {
   font-weight: bold;
   font-family: monospace;
   color: var(--hint-color);
+}
+
+.excerpt {
+  display: inline-block;
+  padding: 3px 0.5rem;
+  width: 76%;
 }
 
 .search-button {
@@ -53,9 +65,9 @@ input#toggle_search_modal {
   right: 4px;
   bottom: 4px;
   width: 70vw;
-  max-width: 800px;
-  height: 66vh;
-  min-height: 450px;
+  max-width: 900px;
+  height: auto;
+  min-height: 60px;
   transform: translateX(-50%);
   border: 1px solid var(--search-modal-color-borders, #321);
   border-radius: 6px;
@@ -88,7 +100,7 @@ input#toggle_search_modal {
 .search-modal .results {
   overflow-y: auto;
   min-height: 200px;
-  max-height: 300px;
+  max-height: 500px;
 }
 
 .search-modal {
@@ -97,6 +109,18 @@ input#toggle_search_modal {
 
 .quick-search-loading {
   margin-left: 2rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.quick-search-loading::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -12px;
+  height: 1px;
+  width: 30%;
+  background-color: var(--key-bg-color);
 }
 
 .search-modal button.more_search {
@@ -109,6 +133,18 @@ input#toggle_search_modal {
   color: var(--search-input-text);
   cursor: pointer;
 }
+
+.search-modal li {
+  border: 1px solid var(--search-modal-color-borders);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+#results-summary { margin-top: 1rem; }
+#results-summary li h3 { margin: 4px; }
+#results-summary.list::before { background-color: transparent; }
 
 .results {
   padding: 0.5rem 1.5rem;
