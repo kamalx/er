@@ -22,6 +22,8 @@
   --search-modal-color-borders: #6666;
   --search-modal-color-shadows: #9999;
   --search-button-hover-outline: #8cf8;
+  --search-input-bg: #fff;
+  --search-input-text: #444;
   --key-text-color: var(--body-text-color);
   --key-bg-color: #ccc;
 }
@@ -47,6 +49,8 @@ html.dark {
   --search-modal-color-borders: #6666;
   --search-modal-color-shadows: #0009;
   --search-button-hover-outline: var(--main-color);
+  --search-input-bg: #444;
+  --search-input-text: #fff;
   --key-text-color: var(--body-text-color);
   --key-bg-color: #555;
 }

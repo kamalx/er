@@ -1,7 +1,7 @@
 {{ define "main" }}
   <main class="center mv4 content-width ph3">
+    <div class="search-loading hidden">Loading...</div>
     <div id="search-results">
-      <div class="search-loading hidden">Loading...</div>
     </div>
 
     <script id="search-result-template" type="text/x-js-template">
@@ -15,16 +15,6 @@
       </p>
     </div>
     </script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.0.0/fuse.min.js"
-      integrity="sha512-GrJ4P9yra6dftp5O0eaKFKS4ch1FYn1xR/VCHQIMJO1LNqcKhjkAkAETHYoE81Ffh3BjCJMWA/AZSYP521jxFA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js"
-      integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"></script>
 
   </main>
 {{ end }}
