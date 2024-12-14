@@ -4,7 +4,7 @@
     <i class="svg-icon svg-icon--fill"><svg><use xlink:href="/images/icons.svg#icon-tag" /></svg></i>
     <span class="dib mb2">tags</span> <br>
     {{ range first $maxtags .Site.Taxonomies.tags.ByCount }}
-    <a class="silver no-underline" href="{{ "/tags/" | relLangURL }}{{ .Name | urlize }}">{{ .Name }}</a></li>
+    <a class="silver no-underline" href="{{ "/tags/" | relLangURL }}{{ .Name | urlize }}">{{ .Name }}</a>
   {{ end }}
 </div>
 {{ end }}
